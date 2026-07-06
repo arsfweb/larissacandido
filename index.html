@@ -26,6 +26,7 @@
         "@type": "MedicalBusiness",
         "name": "Estética Larissa Cândido",
         "image": "logo.png",
+        "telephone": "+554799638376",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "R. Indaial, 319",
@@ -91,7 +92,7 @@
         }
 
         /* ============================================
-           LOADING SCREEN - COM FALLBACK DE SEGURANÇA
+           LOADING SCREEN
            ============================================ */
         #loading-screen {
             position: fixed;
@@ -500,8 +501,26 @@
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
         }
+
+        .service-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-title i { font-size: 1.5rem; }
 
         .service-card {
             background: white;
@@ -511,15 +530,19 @@
             transition: all var(--transition-medium);
             cursor: pointer;
             position: relative;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         .service-image {
-            height: 200px;
+            height: 100%;
+            min-height: 140px;
             background: linear-gradient(135deg, var(--bg-support) 0%, var(--bg-cream) 100%);
             display: flex;
             align-items: center;
@@ -528,52 +551,79 @@
             overflow: hidden;
         }
 
-        .service-icon {
-            font-size: 3.5rem;
-            color: var(--primary-gold);
-            opacity: 0.8;
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
         }
 
-        .service-content { padding: 1.5rem; }
+        .service-card:hover .service-image img { transform: scale(1.1); }
+
+        .service-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            gap: 1rem;
+        }
 
         .service-title {
             font-family: var(--font-primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
             color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .service-price {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            white-space: nowrap;
         }
 
         .service-description {
             color: var(--text-light);
             font-size: 0.9rem;
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
         }
 
         .service-link {
-            color: var(--primary-gold);
+            color: var(--secondary-rose);
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: gap var(--transition-fast);
+            align-self: flex-start;
         }
 
         .service-link:hover { gap: 0.8rem; }
 
         .service-badge {
             position: absolute;
-            top: 1rem; right: 1rem;
+            top: 0.8rem; right: 0.8rem;
             background: var(--secondary-rose);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             z-index: 2;
         }
+
+        .service-badge.popular { background: var(--primary-gold); }
 
         /* ============================================
            GALLERY SECTION
@@ -614,11 +664,7 @@
         }
 
         .gallery-item:hover .gallery-overlay { opacity: 1; }
-
-        .gallery-overlay i {
-            color: white;
-            font-size: 1.8rem;
-        }
+        .gallery-overlay i { color: white; font-size: 1.8rem; }
 
         /* Lightbox */
         .lightbox {
@@ -776,6 +822,51 @@
         .review-source i { color: #4285F4; }
 
         /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+
+        .cta-title {
+            font-family: var(--font-primary);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-gold);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* ============================================
            MAP SECTION
            ============================================ */
         .map-container {
@@ -827,51 +918,6 @@
         .location-card p {
             color: var(--text-light);
             font-size: 0.9rem;
-        }
-
-        /* ============================================
-           CTA SECTION
-           ============================================ */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 5%;
-        }
-
-        .cta-title {
-            font-family: var(--font-primary);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-
-        .cta-text {
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .btn-white {
-            background: white;
-            color: var(--primary-gold);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-family: var(--font-secondary);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
 
         /* ============================================
@@ -947,9 +993,7 @@
             transition: transform var(--transition-fast);
         }
 
-        .mobile-nav-item.active {
-            color: var(--primary-gold);
-        }
+        .mobile-nav-item.active { color: var(--primary-gold); }
 
         .mobile-nav-item.active i {
             transform: translateY(-3px);
@@ -1043,7 +1087,6 @@
         }
 
         .footer-links ul { list-style: none; }
-
         .footer-links li { margin-bottom: 0.7rem; }
 
         .footer-links a {
@@ -1074,10 +1117,7 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         .reveal-left {
             opacity: 0;
@@ -1085,10 +1125,7 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
 
         .reveal-right {
             opacity: 0;
@@ -1096,10 +1133,7 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
 
         .reveal-scale {
             opacity: 0;
@@ -1107,10 +1141,7 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
 
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
@@ -1130,7 +1161,7 @@
             .hero-stats { justify-content: flex-start; }
 
             .about-grid { grid-template-columns: 1fr 1fr; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); }
             .reviews-grid { grid-template-columns: repeat(2, 1fr); }
             .location-info { grid-template-columns: repeat(3, 1fr); }
@@ -1145,7 +1176,7 @@
         }
 
         @media (min-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: repeat(3, 1fr); }
             .gallery-grid { grid-template-columns: repeat(4, 1fr); }
         }
@@ -1154,9 +1185,11 @@
             .lightbox-prev { left: 10px; }
             .lightbox-next { right: 10px; }
             .section { padding: 3.5rem 5%; }
+            
+            .service-card { grid-template-columns: 100px 1fr; }
+            .service-image { min-height: 120px; }
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg-cream); }
         ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 5px; }
@@ -1169,7 +1202,7 @@
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader-container">
-            <img src="https://i.ibb.co/v8Ys3N2/logo.png" alt="Estética Larissa Cândido" class="loader-logo">
+            <img src="logo.png" alt="Estética Larissa Cândido" class="loader-logo">
             <div class="loader-spinner"></div>
             <div class="loader-text">CARREGANDO</div>
         </div>
@@ -1178,11 +1211,11 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="header-container">
-            <img src="https://i.ibb.co/v8Ys3N2/logo.png" alt="Estética Larissa Cândido" class="logo">
+            <img src="logo.png" alt="Estética Larissa Cândido" class="logo">
             <nav class="desktop-nav">
                 <a href="#home" class="nav-link">Início</a>
                 <a href="#sobre" class="nav-link">A Clínica</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#servicos" class="nav-link">Serviços e Valores</a>
                 <a href="#galeria" class="nav-link">Galeria</a>
                 <a href="#depoimentos" class="nav-link">Depoimentos</a>
                 <a href="#contato" class="nav-link">Contato</a>
@@ -1212,7 +1245,7 @@
                     <a href="https://wa.me/554799638376" class="btn-primary" target="_blank">
                         <i class="fab fa-whatsapp"></i> Agende sua Consulta
                     </a>
-                    <a href="#servicos" class="btn-secondary">Conheça Nossos Serviços</a>
+                    <a href="#servicos" class="btn-secondary">Ver Serviços e Valores</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1224,7 +1257,7 @@
                         <span class="stat-label">Clientes Felizes</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">8+</span>
+                        <span class="stat-number">3+</span>
                         <span class="stat-label">Anos de Experiência</span>
                     </div>
                 </div>
@@ -1250,8 +1283,8 @@
                 <div class="about-content reveal-left">
                     <p class="about-text">
                         A <strong>Estética Larissa Cândido</strong> é reconhecida pela excelência 
-                        em procedimentos estéticos. Nossos clientes destacam as 
-                        <em>"mãos de fada"</em> da profissional e o atendimento de alto padrão. 
+                        em procedimentos estéticos. Com 3 anos de experiência, nossa profissional 
+                        é destacada pelas <em>"mãos de fada"</em> e atendimento de alto padrão. 
                         Cada tratamento é personalizado, garantindo resultados que superam expectativas.
                     </p>
                     <div class="about-features">
@@ -1302,138 +1335,274 @@
     <section class="section" id="servicos">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Nossos Serviços</span>
-                <h2 class="section-title">Procedimentos Premium</h2>
+                <span class="section-tag">Serviços e Valores</span>
+                <h2 class="section-title">Nossos Procedimentos</h2>
                 <p class="section-subtitle">
-                    Tratamentos exclusivos para realçar sua beleza natural com segurança e resultados comprovados.
+                    Tratamentos exclusivos com preços acessíveis para realçar sua beleza natural.
                 </p>
             </div>
+            
             <div class="services-grid">
-                <div class="service-card reveal stagger-1">
-                    <div class="service-image">
-                        <i class="fas fa-spa service-icon"></i>
-                        <span class="service-badge">Popular</span>
+                <!-- FACIAIS -->
+                <div class="service-category reveal">
+                    <h3 class="category-title">
+                        <i class="fas fa-face-smile"></i>
+                        FACIAIS
+                    </h3>
+                    
+                    <div class="service-card stagger-1">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUtreW7BnseVVHAo75_T1sSQwgt-zvh7UKEmjzgjLelA&s=10" alt="Limpeza de Pele">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Limpeza de Pele</h3>
+                                <div class="service-price">R$120</div>
+                            </div>
+                            <p class="service-description">Tratamento profundo para renovação celular, remoção de impurezas e hidratação intensa.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Limpeza de Pele" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Limpeza de Pele</h3>
-                        <p class="service-description">Tratamento profundo para renovação celular, remoção de impurezas e hidratação intensa.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Limpeza de Pele" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
+
+                    <div class="service-card stagger-2">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEvyg2vgEWy-sPKGf8QGOIUpbr4X8Zj4HLk_OhcJHimA&s=10" alt="Microagulhamento">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Microagulhamento</h3>
+                                <div class="service-price">R$180</div>
+                            </div>
+                            <p class="service-description">Estimulação de colágeno para melhorar textura, cicatrizes e rejuvenescimento da pele.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Microagulhamento" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card stagger-3">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUge6EB1-WE7hY13JTh6mAxtq_BIUUbzD5n2MXeCBtgw&s=10" alt="Hidragloss">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Hidragloss</h3>
+                                <div class="service-price">R$90</div>
+                            </div>
+                            <p class="service-description">Tratamento labial para hidratação profunda e realce natural dos lábios.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Hidragloss" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card stagger-4">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_g-daeLisYe9dhkBbPECTZjSoFYYQxiM1TjdpSCsk6A&s=10" alt="Enzima Botox">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Enzima Botox</h3>
+                                <div class="service-price">R$150</div>
+                            </div>
+                            <p class="service-description">Alternativa natural ao botox para suavizar linhas de expressão e rugas.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Enzima Botox" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card stagger-5">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLla5mGHKbviptQniYh5kNHOPk3BD1Wq_6wPnRLnBFUA&s=10" alt="Dermaplaning">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Dermaplaning</h3>
+                                <div class="service-price">R$140</div>
+                            </div>
+                            <p class="service-description">Esfoliação física que remove células mortas e penugem para pele mais lisa.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Dermaplaning" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card stagger-1">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFS4VzuiC_p88Hd3DC_pjJrUiorZZMIBehKySk-7Iwiw&s=10" alt="Peeling Acne">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Peeling Acne</h3>
+                                <div class="service-price">R$100</div>
+                            </div>
+                            <p class="service-description">Tratamento específico para controle da acne e redução de cicatrizes.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Peeling para Acne" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="service-card stagger-2">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_fb81viupfsxqVqKxRHLKNSP0LP3nNPp1ch51jwg8Cg&s=10" alt="Peeling Manchas">
+                            <span class="service-badge popular">Popular</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Peeling Manchas</h3>
+                                <div class="service-price">R$130</div>
+                            </div>
+                            <p class="service-description">Clareamento de manchas e uniformização do tom da pele.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Peeling para Manchas" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="service-card reveal stagger-2">
-                    <div class="service-image">
-                        <i class="fas fa-magic service-icon"></i>
+
+                <!-- CORPORAIS -->
+                <div class="service-category reveal">
+                    <h3 class="category-title">
+                        <i class="fas fa-spa"></i>
+                        CORPORAIS
+                    </h3>
+                    
+                    <div class="service-card stagger-3">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROSC8KwUBJo6wE8KPirzRH3zefNcqclZGC7D5DVqn1aQ&s=10" alt="Drenagem Linfática">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Drenagem Linfática</h3>
+                                <div class="service-price">R$100</div>
+                            </div>
+                            <p class="service-description">Massagem que estimula o sistema linfático, reduzindo inchaço e melhorando a circulação.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Drenagem Linfática" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Peeling Químico</h3>
-                        <p class="service-description">Renovação da pele com ácidos específicos para tratar manchas, acne e sinais de envelhecimento.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Peeling Químico" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
+
+                    <div class="service-card stagger-4">
+                        <div class="service-image">
+                            <img src="logo.png" alt="Pacote 4 Sessões">
+                            <span class="service-badge">Economia</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Pacote 4 Sessões</h3>
+                                <div class="service-price">R$380</div>
+                            </div>
+                            <p class="service-description">Pacote promocional com 4 sessões de drenagem linfática (economia de R$20).</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Pacote 4 Sessões" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card reveal stagger-3">
-                    <div class="service-image">
-                        <i class="fas fa-syringe service-icon"></i>
-                        <span class="service-badge">Premium</span>
+
+                    <div class="service-card stagger-5">
+                        <div class="service-image">
+                            <img src="logo.png" alt="Pacote 5 Sessões">
+                            <span class="service-badge popular">Mais Econômico</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Pacote 5 Sessões</h3>
+                                <div class="service-price">R$470</div>
+                            </div>
+                            <p class="service-description">Pacote promocional com 5 sessões de drenagem linfática (economia de R$30).</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Pacote 5 Sessões" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Harmonização Facial</h3>
-                        <p class="service-description">Procedimentos com preenchimento e toxina botulínica para equilibrar e realçar os traços faciais.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Harmonização Facial" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
+
+                    <div class="service-card stagger-1">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7_odiAg0Twh_QIH1j5QRAmz22VT1BfH9ZgdRdhv4bYQ&s=10" alt="Plástica dos Pés">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Plástica dos Pés</h3>
+                                <div class="service-price">R$90</div>
+                            </div>
+                            <p class="service-description">Tratamento completo para remoção de calosidades e renovação da pele dos pés.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de agendar Plástica dos Pés" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card reveal stagger-4">
-                    <div class="service-image">
-                        <i class="fas fa-hand-holding-heart service-icon"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Drenagem Linfática</h3>
-                        <p class="service-description">Massagem especializada que estimula o sistema linfático, reduzindo inchaço e melhorando a circulação.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Drenagem Linfática" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card reveal stagger-5">
-                    <div class="service-image">
-                        <i class="fas fa-bolt service-icon"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Radiofrequência</h3>
-                        <p class="service-description">Tecnologia avançada para firmeza da pele, combate à flacidez e estímulo de colágeno.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Radiofrequência" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card reveal stagger-1">
-                    <div class="service-image">
-                        <i class="fas fa-leaf service-icon"></i>
-                        <span class="service-badge">Novo</span>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Protocolo Anti-Idade</h3>
-                        <p class="service-description">Tratamento completo e personalizado para rejuvenescimento facial com resultados visíveis.</p>
-                        <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Protocolo Anti-Idade" class="service-link" target="_blank">
-                            Ver Detalhes <i class="fas fa-arrow-right"></i>
-                        </a>
+
+                    <div class="service-card stagger-2">
+                        <div class="service-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-JmVVSkH9k2RXMFLjSp0gZAUXVQu0Xvcs1DN5S9myA&s=10" alt="Clareamento Íntimo">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3 class="service-title">Clareamento Íntimo</h3>
+                                <div class="service-price">R$90</div>
+                            </div>
+                            <p class="service-description">Clareamento suave e seguro para áreas íntimas e sensíveis.</p>
+                            <a href="https://wa.me/554799638376?text=Olá! Gostaria de saber mais sobre Clareamento Íntimo" class="service-link" target="_blank">
+                                Agendar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-		<!-- Gallery Section -->
-		<section class="section section-cream" id="galeria">
-			<div class="container">
-				<div class="section-header reveal">
-					<span class="section-tag">Galeria</span>
-					<h2 class="section-title">Nossos Resultados</h2>
-					<p class="section-subtitle">
-						Veja a transformação real dos nossos procedimentos. Cada imagem conta uma história de cuidado e excelência.
-					</p>
-				</div>
-				<div class="gallery-grid">
-					<div class="gallery-item reveal-scale stagger-1" data-photos='["https://i.ibb.co/YFd6CJPd/perfil.jpg"]'>
-						<img src="https://i.ibb.co/YFd6CJPd/perfil.jpg" alt="Perfil" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-2" data-photos='["https://i.ibb.co/Nn7RpSkp/resultado1.jpg"]'>
-						<img src="https://i.ibb.co/Nn7RpSkp/resultado1.jpg" alt="Resultado 1" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-3" data-photos='["https://i.ibb.co/ZztDBLFM/resultado2.jpg"]'>
-						<img src="https://i.ibb.co/ZztDBLFM/resultado2.jpg" alt="Resultado 2" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-4" data-photos='["https://i.ibb.co/GvjpFmh7/resultado4.jpg"]'>
-						<img src="https://i.ibb.co/GvjpFmh7/resultado4.jpg" alt="Resultado 4" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-5" data-photos='["https://i.ibb.co/272tvgf2/resultado5.webp"]'>
-						<img src="https://i.ibb.co/272tvgf2/resultado5.webp" alt="Resultado 5" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-1" data-photos='["https://i.ibb.co/XxdjyL2b/resultado6.webp"]'>
-						<img src="https://i.ibb.co/XxdjyL2b/resultado6.webp" alt="Resultado 6" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-2" data-photos='["https://i.ibb.co/XmB4C38/resultado3.webp"]'>
-						<img src="https://i.ibb.co/XmB4C38/resultado3.webp" alt="Resultado 3" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-					<div class="gallery-item reveal-scale stagger-2" data-photos='["https://i.ibb.co/67J5RgPM/image.png"]'>
-						<img src="https://i.ibb.co/67J5RgPM/image.png" alt="Resultado 3" loading="lazy">
-						<div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Gallery Section -->
+    <section class="section section-cream" id="galeria">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Galeria</span>
+                <h2 class="section-title">Nossos Resultados</h2>
+                <p class="section-subtitle">
+                    Veja a transformação real dos nossos procedimentos.
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal-scale stagger-1" data-photos='["https://i.ibb.co/YFd6CJPd/perfil.jpg"]'>
+                    <img src="https://i.ibb.co/YFd6CJPd/perfil.jpg" alt="Perfil" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-2" data-photos='["https://i.ibb.co/Nn7RpSkp/resultado1.jpg"]'>
+                    <img src="https://i.ibb.co/Nn7RpSkp/resultado1.jpg" alt="Resultado 1" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-3" data-photos='["https://i.ibb.co/ZztDBLFM/resultado2.jpg"]'>
+                    <img src="https://i.ibb.co/ZztDBLFM/resultado2.jpg" alt="Resultado 2" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-4" data-photos='["https://i.ibb.co/GvjpFmh7/resultado4.jpg"]'>
+                    <img src="https://i.ibb.co/GvjpFmh7/resultado4.jpg" alt="Resultado 4" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-5" data-photos='["https://i.ibb.co/272tvgf2/resultado5.webp"]'>
+                    <img src="https://i.ibb.co/272tvgf2/resultado5.webp" alt="Resultado 5" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-1" data-photos='["https://i.ibb.co/XxdjyL2b/resultado6.webp"]'>
+                    <img src="https://i.ibb.co/XxdjyL2b/resultado6.webp" alt="Resultado 6" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-2" data-photos='["https://i.ibb.co/XmB4C38/resultado3.webp"]'>
+                    <img src="https://i.ibb.co/XmB4C38/resultado3.webp" alt="Resultado 3" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-3" data-photos='["https://i.ibb.co/67J5RgPM/image.png"]'>
+                    <img src="https://i.ibb.co/67J5RgPM/image.png" alt="Resultado 7" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -1581,7 +1750,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="https://i.ibb.co/v8Ys3N2/logo.png" alt="Estética Larissa Cândido">
+                <img src="logo.png" alt="Estética Larissa Cândido" onerror="this.style.display='none'">
                 <p class="footer-text">
                     Beleza que transforma. Clínica de estética premium em Itajaí, 
                     dedicada a realçar sua beleza natural com excelência e carinho.
@@ -1597,7 +1766,7 @@
                 <ul>
                     <li><a href="#home">Início</a></li>
                     <li><a href="#sobre">A Clínica</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#servicos">Serviços e Valores</a></li>
                     <li><a href="#galeria">Galeria</a></li>
                     <li><a href="#depoimentos">Depoimentos</a></li>
                 </ul>
@@ -1646,23 +1815,17 @@
 
     <!-- JavaScript -->
     <script>
-        /* ============================================
-           LOADING SCREEN - COM FALLBACK DE SEGURANÇA
-           ============================================ */
+        // Loading Screen
         (function() {
             'use strict';
-            
             const loadingScreen = document.getElementById('loading-screen');
             let loadingHidden = false;
             
             function hideLoading() {
                 if (loadingHidden) return;
                 loadingHidden = true;
-                
                 if (loadingScreen) {
                     loadingScreen.classList.add('hidden');
-                    
-                    // Remove do DOM após a transição
                     setTimeout(function() {
                         if (loadingScreen.parentNode) {
                             loadingScreen.parentNode.removeChild(loadingScreen);
@@ -1671,55 +1834,26 @@
                 }
             }
             
-            // Método 1: Quando a página carregar completamente
-            window.addEventListener('load', function() {
-                // Pequeno delay para garantir que os recursos foram renderizados
-                setTimeout(hideLoading, 500);
-            });
-            
-            // Método 2: Fallback com timeout (NUNCA trava a tela)
+            window.addEventListener('load', function() { setTimeout(hideLoading, 500); });
             setTimeout(hideLoading, 4000);
-            
-            // Método 3: Se o DOM já estiver pronto
-            if (document.readyState === 'complete') {
-                setTimeout(hideLoading, 500);
-            }
+            if (document.readyState === 'complete') { setTimeout(hideLoading, 500); }
         })();
 
-        /* ============================================
-           HEADER SCROLL EFFECT
-           ============================================ */
+        // Header Scroll
         (function() {
             const header = document.getElementById('header');
-            let lastScroll = 0;
-            
-            function handleScroll() {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > 50) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-                
-                lastScroll = currentScroll;
-            }
-            
-            window.addEventListener('scroll', handleScroll, { passive: true });
+            }, { passive: true });
         })();
 
-        /* ============================================
-           SCROLL REVEAL - INTERSECTION OBSERVER
-           ============================================ */
+        // Scroll Reveal
         (function() {
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -1727,23 +1861,18 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
             
-            revealElements.forEach(function(el) {
-                observer.observe(el);
-            });
+            revealElements.forEach(function(el) { observer.observe(el); });
         })();
 
-        /* ============================================
-           MOBILE NAV ACTIVE STATE
-           ============================================ */
+        // Mobile Nav Active
         (function() {
             const sections = document.querySelectorAll('section[id]');
             const navItems = document.querySelectorAll('.mobile-nav-item:not(.mobile-nav-cta)');
             
-            function updateActiveNav() {
+            window.addEventListener('scroll', function() {
                 const scrollPos = window.scrollY + 200;
-                
                 sections.forEach(function(section) {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.offsetHeight;
@@ -1758,23 +1887,15 @@
                         });
                     }
                 });
-            }
-            
-            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            }, { passive: true });
         })();
 
-        /* ============================================
-           LIGHTBOX GALLERY
-           ============================================ */
+        // Lightbox
         (function() {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCounter = document.getElementById('lightbox-counter');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const lightboxPrev = document.getElementById('lightbox-prev');
-            const lightboxNext = document.getElementById('lightbox-next');
             const galleryItems = document.querySelectorAll('.gallery-item');
-            
             let currentPhotos = [];
             let currentIndex = 0;
             
@@ -1796,16 +1917,6 @@
                 lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentPhotos.length;
             }
             
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % currentPhotos.length;
-                updateLightboxImage();
-            }
-            
-            function prevImage() {
-                currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
-                updateLightboxImage();
-            }
-            
             galleryItems.forEach(function(item) {
                 item.addEventListener('click', function() {
                     const photos = JSON.parse(item.getAttribute('data-photos'));
@@ -1813,137 +1924,37 @@
                 });
             });
             
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightboxNext.addEventListener('click', nextImage);
-            lightboxPrev.addEventListener('click', prevImage);
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox-next').addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % currentPhotos.length;
+                updateLightboxImage();
+            });
+            document.getElementById('lightbox-prev').addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+                updateLightboxImage();
+            });
             
             lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-            
-            // Teclado
-            document.addEventListener('keydown', function(e) {
-                if (!lightbox.classList.contains('active')) return;
-                
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowRight') nextImage();
-                if (e.key === 'ArrowLeft') prevImage();
-            });
-            
-            // Touch/Swipe no lightbox
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            lightbox.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            
-            lightbox.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) nextImage();
-                    else prevImage();
-                }
-            }, { passive: true });
-        })();
-
-        /* ============================================
-           SMOOTH SCROLL PARA LINKS INTERNOS
-           ============================================ */
-        (function() {
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        e.preventDefault();
-                        const headerHeight = document.getElementById('header').offsetHeight;
-                        const targetPosition = target.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+                if (e.target === lightbox) closeLightbox();
             });
         })();
 
-        /* ============================================
-           ANIMAÇÃO DOS NÚMEROS (STATS)
-           ============================================ */
-        (function() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            let animated = false;
-            
-            function animateNumbers() {
-                if (animated) return;
-                
-                statNumbers.forEach(function(stat) {
-                    const text = stat.textContent;
-                    const hasPlus = text.includes('+');
-                    const hasDot = text.includes('.');
-                    
-                    let target;
-                    if (hasDot) {
-                        target = parseFloat(text);
-                    } else {
-                        target = parseInt(text);
-                    }
-                    
-                    if (isNaN(target)) return;
-                    
-                    let current = 0;
-                    const increment = target / 50;
-                    const duration = 1500;
-                    const stepTime = duration / 50;
-                    
-                    const timer = setInterval(function() {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        
-                        if (hasDot) {
-                            stat.textContent = current.toFixed(1);
-                        } else {
-                            stat.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-                        }
-                    }, stepTime);
-                });
-                
-                animated = true;
-            }
-            
-            const statsSection = document.querySelector('.hero-stats');
-            if (statsSection) {
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            setTimeout(animateNumbers, 500);
-                            observer.unobserve(entry.target);
-                        }
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    window.scrollTo({
+                        top: target.offsetTop - headerHeight,
+                        behavior: 'smooth'
                     });
-                }, { threshold: 0.5 });
-                
-                observer.observe(statsSection);
-            }
-        })();
-
-        /* ============================================
-           PREVENÇÃO DE FLASH NO LOADING
-           ============================================ */
-        document.documentElement.style.visibility = 'visible';
-        
-        console.log('%c Estética Larissa Cândido ', 'background: #C9A96E; color: white; padding: 10px; font-size: 16px; border-radius: 5px;');
-        console.log('%c Premium Landing Page Loaded Successfully ', 'color: #C9A96E; font-size: 12px;');
+                }
+            });
+        });
     </script>
 </body>
 </html>
